@@ -1,0 +1,46 @@
+/* General Reset for padding and margins */
+* {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #0D1B2A; /* Dark blue resembling the night sky */
+    color: #E0E1DD; /* Light grey color for text to ensure readability */
+  }
+  
+  .container {
+    /* padding: 0 15px; Reducing padding around the container */
+    background-color: #1B263B; /* A slightly lighter shade of blue for contrast */
+    padding: 20px; /* Optional padding to give some breathing room */
+    border-radius: 10px; /* Optional rounded corners for a softer look */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional shadow for a subtle depth */
+  }
+  
+  .image-container {
+    margin-bottom: 20px; /* Adjust space between image and text */
+    background-color: #0D1B2A; /* Matching the page background for cohesion */
+
+  }
+  
+  .image-container img {
+    width: 100%; /* Ensure images are fully responsive */
+    display: block; /* Removes bottom margin/padding */
+    height: auto; /* Keep aspect ratio */
+  }
+
+  .mb-4, p {
+    color: #f7f7f7; /* An off-white/soft green for readability and a hint of color */
+  }
+
+  
+
+  /* Additional styling for input to match the new theme */
+/* input[type="date"] {
+    background-color: #14253D;
+    border: none;
+    color: white;
+  }
+  
+  input[type="date"]:hover {
+    background-color: #1B263B;
+  } */

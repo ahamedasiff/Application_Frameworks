@@ -1,0 +1,57 @@
+.logoContainer {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Removes underline from the link */
+  }
+  
+  .satellite {
+    width: 30px;
+    height: 30px;
+    /* background: url('/path-to-your-satellite-image.png') no-repeat center center; */
+    background-size: contain;
+    animation: orbit 20s infinite linear;
+  }
+  
+  @keyframes orbit {
+    0% { transform: rotate(0deg) translateX(20px); }
+    100% { transform: rotate(360deg) translateX(20px); }
+  }
+  
+  .brandText {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-left: 10px;
+    text-decoration: none; /* Ensure no underline */
+  }
+
+  /* Styles for the navigation links */
+.nav-link {
+    font-size: 1.2rem; /* Increase font size */
+    text-align: center; /* Center text */
+    padding: 10px; /* Adjust padding as needed */
+    color: #ffffff; /* Text color */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .navbar-nav .nav-link {
+    color: #ffffff;
+    transition: color 0.5s ease-in-out;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #0d6efd; /* Hover color matching the theme */
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  
+  .navbar {
+    background-color: #0d6efd; /* Fresh blue color */
+  }
+  
+  .navbarToggler, .navbarTogglerOpen {
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+  }
+  
