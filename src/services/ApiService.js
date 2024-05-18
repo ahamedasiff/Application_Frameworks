@@ -11,11 +11,20 @@ export const fetchAPOD = async (date) => {
 };
 
 // NASA Images API call
+// ApiService.js
 export const fetchNasaImages = async (query) => {
-  const url = `https://images-api.nasa.gov/search?q=${encodeURIComponent(query)}`;
-  const response = await axios.get(url);
-  return response.data.collection.items;
+  const apiKey = 'DEMO_KEY'; // Replace with your actual NASA API key
+  const url = `https://images-api.nasa.gov/search?q=${query}&media_type=image`;
+
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+
+  const data = await response.json();
+  return data.collection.items;
 };
+
 
 // Mars Rover Images API call
 export const fetchMarsPhotos = async (sol, camera) => {

@@ -13,6 +13,7 @@ function NasaImages() {
   const handleFetchImages = async () => {
     setLoading(true);
     setSearchAttempted(true);
+    setError(null);
     try {
       const items = await fetchNasaImages(query);
       setImages(items);
@@ -40,7 +41,13 @@ function NasaImages() {
           <button className="btn btn-primary w-100 mb-3" onClick={handleFetchImages}>Search</button>
         </div>
       </div>
-      {loading && <div className="text-center"><div className="spinner-border text-light" role="status"><span className="visually-hidden">Loading...</span></div></div>}
+      {loading && (
+        <div className="text-center">
+          <div className="spinner-border text-light" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      )}
       {error && <div className="alert alert-danger" role="alert">Error: {error}</div>}
       {searchAttempted && images.length === 0 && !loading && (
         <div className="text-center">No images found for this query.</div>
@@ -66,9 +73,10 @@ function NasaImages() {
 
 export default NasaImages;
 
-
+// // NasaImages.js
 // import React, { useState } from 'react';
-// import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import { fetchNasaImages } from '../services/ApiService'; // Adjust the path as necessary
 
 // function NasaImages() {
 //   const [images, setImages] = useState([]);
@@ -77,19 +85,12 @@ export default NasaImages;
 //   const [error, setError] = useState(null);
 //   const [searchAttempted, setSearchAttempted] = useState(false);
 
-//   const fetchImages = async () => {
+//   const handleFetchImages = async () => {
 //     setLoading(true);
 //     setSearchAttempted(true);
 //     try {
-//       const apiKey = 'X9zcVNSCdrV6hWt7i27KJSHpcRKhUAONOHwuGu77'; // Replace with your actual API key
-//       const url = `https://images-api.nasa.gov/search?q=${encodeURIComponent(query)}`;
-
-//       const response = await fetch(url);
-//       if (!response.ok) {
-//         throw new Error('Network response was not ok');
-//       }
-//       const data = await response.json();
-//       setImages(data.collection.items);
+//       const items = await fetchNasaImages(query);
+//       setImages(items);
 //     } catch (error) {
 //       setError(error.message);
 //     } finally {
@@ -99,19 +100,19 @@ export default NasaImages;
 
 //   return (
 //     <div className="container mt-5">
-//       <h1 className="mb-4 text-center">NASA Images</h1>
+//       <h1 className="mb-4 text-center">Search and Explore NASA Related Articles</h1>
 //       <div className="row mb-3 align-items-end">
 //         <div className="col-md-8">
 //           <input
 //             type="text"
-//             className="form-control"
+//             className="form-control mb-3"
 //             placeholder="Enter search term"
 //             value={query}
 //             onChange={(e) => setQuery(e.target.value)}
 //           />
 //         </div>
 //         <div className="col-md-4">
-//           <button className="btn btn-primary w-100" onClick={fetchImages}>Search</button>
+//           <button className="btn btn-primary w-100 mb-3" onClick={handleFetchImages}>Search</button>
 //         </div>
 //       </div>
 //       {loading && <div className="text-center"><div className="spinner-border text-light" role="status"><span className="visually-hidden">Loading...</span></div></div>}
@@ -122,11 +123,11 @@ export default NasaImages;
 //       <div className="row">
 //         {images.map((image, index) => (
 //           <div key={index} className="col-lg-4 col-md-6 mb-4">
-//             <div className="card h-100" style={{ minHeight: '450px' }}> {/* Ensure all cards are the same height */}
+//             <div className="card h-100" style={{ minHeight: '450px', maxHeight: '450px', overflow: 'hidden' }}>
 //               <img src={image.links[0].href} alt={image.data[0].title} className="card-img-top img-fluid" style={{ height: '200px', objectFit: 'cover' }} />
 //               <div className="card-body d-flex flex-column">
 //                 <h5 className="card-title">{image.data[0].title}</h5>
-//                 <div className="card-text overflow-auto" style={{ flex: '1'}}> {/* Scrollable text area */}
+//                 <div className="card-text overflow-auto" style={{ maxHeight: '150px', textAlign: 'justify' }}>
 //                   {image.data[0].description}
 //                 </div>
 //               </div>
@@ -139,3 +140,4 @@ export default NasaImages;
 // }
 
 // export default NasaImages;
+
